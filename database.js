@@ -12,7 +12,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         throw err
     } else {
         console.log('Connected to the SQLite database.')
-        console.log('Creant taula usuari') 
+        console.log('Creant taula user') 
         db.run(`CREATE TABLE user (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name text, 

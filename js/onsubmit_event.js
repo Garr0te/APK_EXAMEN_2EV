@@ -7,7 +7,7 @@ function validateForm(){
             console.log(document.getElementById('password').value.length < 8)
             if(document.getElementById('password').value.length < 8){ // Añadimos para que la contraseña tenga mínimo 8 carácteres
                 
-                alert('Contraseña debe ser mayor a 8 carácteres!') // Aviso de ayuda al usuario
+                alert('Contrasenya ha de tenir més de 8 caràcters!') // Aviso de ayuda al usuario
                 return false
             }
             // Ahora, comparamos las dos contraseñas, si no coinciden...alertar al usuario
