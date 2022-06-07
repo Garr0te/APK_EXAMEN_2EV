@@ -27,7 +27,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                     // Table just created, creating some rows
                     console.error("Insertant usuari") // comprobación de creación de tabla
                     var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
-                    var param = ["ferran","fer@fer.com",md5("password")] // Usuario 
+                    var param = ["Toni","ton@ton.es",md5("password")] // Usuario 
                     db.run(insert, param)
                 }
             })
