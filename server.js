@@ -111,7 +111,7 @@ app.post("/api/user/", (req, res, next) => {
         email: req.body.email,
         password : md5(req.body.password)
     }
-    var sql ='INSERT INTO user (id, name, email, password) VALUES (?,?,?,?)' // Consulta a la base de datos
+    var sql ='INSERT INTO user (name, email, password) VALUES (?,?,?)' // Consulta a la base de datos
     
     var params =[data.name, data.email, data.password]
     db.run(sql, params, function (err, result) {
@@ -194,10 +194,10 @@ app.delete("/api/eliminarnota/:nota", autenticarusuari, (req, res, next) => {
                 return;
             }
             if(this.changes > 1){
-                res.json({"message":"La anotación se ha eliminado con éxito"})
+                res.json({"message":"La anotació NO s'ha eliminat"})
             } 
             else {
-                res.json({"message":"la anotación no se ha podido eliminar"})
+                res.json({"message":"l'anotació s'ha  eliminat "})
             }
         
         }
