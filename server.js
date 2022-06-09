@@ -182,7 +182,7 @@ app.post('/api/anotar', autenticarusuari, (req, res) => {
         return
     });
 });
-
+/*
 // Endpoint para ver las anotaciones
 app.get('/api/vorenota/:usuari', autenticarusuari, (req, res) => {
     if (req.params.usuari != req.usuari.id) { // si no autenticat
@@ -199,6 +199,25 @@ app.get('/api/vorenota/:usuari', autenticarusuari, (req, res) => {
         return
     });
 })
+*/
+app.get('/api/vorenota/:usuari', autenticarusuari, (req, res) => {
+    if(req.params.usuari != req.usuari.id){ // si no autenticat
+        res.status(400).json({"error": "no tiene permisos para ver las anotaciones de otros usuarios"})
+        return
+    }
+    var sql = "SELECT anotacio FROM anotacions WHERE id_user = ?";
+    db.all(sql, [req.params.usuari,], function (err, result) {
+        if (err){
+            res.status(400).json({"error": err.message})
+            return
+        }
+        const notes =[];
+        result.forEach((row) => {notes.push(decryptWithAES(row['anotacio']))})
+        res.status(200).send(notes)
+        return
+        });
+})
+
 
 // Eliminación de las anotaciones (En proceso...)
 app.delete("/api/eliminarnota/:nota", autenticarusuari, (req, res, next) => {
